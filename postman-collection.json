@@ -1,0 +1,614 @@
+{
+	"info": {
+		"_postman_id": "c4b15f6d-0b31-4c3e-bcd3-1156ca570764",
+		"name": "REST/GQL Requests",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "GQL",
+			"item": [
+				{
+					"name": "GQL - Email Exists",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "{\n    emailExists(email: \"juandelacruz@mail.com\")\n}",
+								"variables": ""
+							}
+						},
+						"url": {
+							"raw": "{{graphql_url}}",
+							"host": [
+								"{{graphql_url}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GQL - Register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "mutation {\n    register (firstName: \"Juan\", lastName: \"Dela Cruz\", email: \"juandelacruz@mail.com\", password: \"juandelacruz@mail.com\")\n}",
+								"variables": ""
+							}
+						},
+						"url": {
+							"raw": "{{graphql_url}}",
+							"host": [
+								"{{graphql_url}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GQL - Add Course",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "mutation {\n    addCourse (\n        name: \"PHP with Laravel\", \n        description: \"A two-month course on PHP programming with Laravel framework\", \n        price: 10000\n    )\n}",
+								"variables": ""
+							}
+						},
+						"url": {
+							"raw": "{{graphql_url}}",
+							"host": [
+								"{{graphql_url}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GQL - Get All Courses",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "{\n    getAllCourses {\n        id\n        name\n        description\n        price\n        isActive\n        createdOn\n        enrollees {\n            id\n            userId\n            enrolledOn\n        }\n    }\n}",
+								"variables": ""
+							}
+						},
+						"url": {
+							"raw": "{{graphql_url}}",
+							"host": [
+								"{{graphql_url}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GQL - Get Course",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "{\n    getCourse (courseId: \"5ec4d01de2432e47e33df8b7\") {\n        name\n        description\n        price\n        isActive\n        createdOn\n        enrollees {\n            id\n            userId\n            enrolledOn\n        }\n    }\n}",
+								"variables": ""
+							}
+						},
+						"url": {
+							"raw": "{{graphql_url}}",
+							"host": [
+								"{{graphql_url}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GQL - Update Course",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "mutation {\n    updateCourse (\n        courseId: \"5ec4d717f2314f4a36cfdb77\",\n        name: \"PHP with Laravel\", \n        description: \"A two-month course on PHP programming with Laravel framework\", \n        price: 10000\n    )\n}",
+								"variables": ""
+							}
+						},
+						"url": {
+							"raw": "{{graphql_url}}",
+							"host": [
+								"{{graphql_url}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GQL - Archive Course",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "mutation {\n    archiveCourse (\n        courseId: \"5ec4d717f2314f4a36cfdb77\"\n    )\n}",
+								"variables": ""
+							}
+						},
+						"url": {
+							"raw": "{{graphql_url}}",
+							"host": [
+								"{{graphql_url}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GQL -  Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "mutation {\n    login (email: \"juandelacruz@mail.com\", password: \"juandelacruz@mail.com\") {\n        accessToken\n    }\n}",
+								"variables": ""
+							}
+						},
+						"url": {
+							"raw": "{{graphql_url}}",
+							"host": [
+								"{{graphql_url}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GQL - Get User Details",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVlYzQxYjczMTFkZGZjMWFjYTM5OTY5NCIsImVtYWlsIjoianVhbmRlbGFjcnV6QG1haWwuY29tIiwiaXNBZG1pbiI6ZmFsc2UsImlhdCI6MTU4OTk3NTEzNn0.l8QCVAjoJ8dOSz-NNrVUGLrC3fVzYBC5ekogjq39LyY",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "{\n    getUser {\n        firstName\n        lastName\n        email\n        isAdmin\n        enrollments {\n            id\n            courseId\n            enrolledOn\n            status\n        }\n    }\n}",
+								"variables": ""
+							}
+						},
+						"url": {
+							"raw": "{{graphql_url}}",
+							"host": [
+								"{{graphql_url}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GQL - Enroll",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVlYzQxYjczMTFkZGZjMWFjYTM5OTY5NCIsImVtYWlsIjoianVhbmRlbGFjcnV6QG1haWwuY29tIiwiaXNBZG1pbiI6ZmFsc2UsImlhdCI6MTU4OTk3NTEzNn0.l8QCVAjoJ8dOSz-NNrVUGLrC3fVzYBC5ekogjq39LyY",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "{\n    getUser {\n        firstName\n        lastName\n        email\n        isAdmin\n        enrollments {\n            id\n            courseId\n            enrolledOn\n            status\n        }\n    }\n}",
+								"variables": ""
+							}
+						},
+						"url": {
+							"raw": "{{graphql_url}}",
+							"host": [
+								"{{graphql_url}}"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "REST",
+			"item": [
+				{
+					"name": "REST - Email Exists",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "email",
+									"value": "juandelacruz@mail.com",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{rest_url}}/users/email-exists",
+							"host": [
+								"{{rest_url}}"
+							],
+							"path": [
+								"users",
+								"email-exists"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "REST - Register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "firstName",
+									"value": "Juan",
+									"type": "text"
+								},
+								{
+									"key": "lastName",
+									"value": "Dela Cruz",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "juandelacruz@mail.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "juandelacruz@mail.com",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{rest_url}}/users",
+							"host": [
+								"{{rest_url}}"
+							],
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "REST - Add Course",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "Full-Stack JavaScript Web Development",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "A three-month course on full-stack web development using JavaScript.",
+									"type": "text"
+								},
+								{
+									"key": "price",
+									"value": "20000",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{rest_url}}/courses",
+							"host": [
+								"{{rest_url}}"
+							],
+							"path": [
+								"courses"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "REST - Get All Courses",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": []
+						},
+						"url": {
+							"raw": "{{rest_url}}/courses",
+							"host": [
+								"{{rest_url}}"
+							],
+							"path": [
+								"courses"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "REST - Get Course",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": []
+						},
+						"url": {
+							"raw": "{{rest_url}}/courses/5ec4d01de2432e47e33df8b7",
+							"host": [
+								"{{rest_url}}"
+							],
+							"path": [
+								"courses",
+								"5ec4d01de2432e47e33df8b7"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "REST - Update Course",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "Full-Stack JavaScript Web Developments",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "A three-month course on full-stack web development using JavaScript.",
+									"type": "text"
+								},
+								{
+									"key": "price",
+									"value": "20000",
+									"type": "text"
+								},
+								{
+									"key": "courseId",
+									"value": "5ec4d01de2432e47e33df8b7",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{rest_url}}/courses",
+							"host": [
+								"{{rest_url}}"
+							],
+							"path": [
+								"courses"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "REST - Archive Course",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": []
+						},
+						"url": {
+							"raw": "{{rest_url}}/courses/5ec4d01de2432e47e33df8b7",
+							"host": [
+								"{{rest_url}}"
+							],
+							"path": [
+								"courses",
+								"5ec4d01de2432e47e33df8b7"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "REST - Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "email",
+									"value": "juandelacruz@mail.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "juandelacruz@mail.com",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{rest_url}}/users/login",
+							"host": [
+								"{{rest_url}}"
+							],
+							"path": [
+								"users",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "REST - Get User Details",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVlYzQxYjczMTFkZGZjMWFjYTM5OTY5NCIsImVtYWlsIjoianVhbmRlbGFjcnV6QG1haWwuY29tIiwiaXNBZG1pbiI6ZmFsc2UsImlhdCI6MTU4OTk3NTEzNn0.l8QCVAjoJ8dOSz-NNrVUGLrC3fVzYBC5ekogjq39LyY",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": []
+						},
+						"url": {
+							"raw": "{{rest_url}}/users/details",
+							"host": [
+								"{{rest_url}}"
+							],
+							"path": [
+								"users",
+								"details"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "REST - Enroll",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVlYzQxYjczMTFkZGZjMWFjYTM5OTY5NCIsImVtYWlsIjoianVhbmRlbGFjcnV6QG1haWwuY29tIiwiaXNBZG1pbiI6ZmFsc2UsImlhdCI6MTU4OTk3NTEzNn0.l8QCVAjoJ8dOSz-NNrVUGLrC3fVzYBC5ekogjq39LyY",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "courseId",
+									"value": "5ec4d717f2314f4a36cfdb77",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{rest_url}}/users/enroll",
+							"host": [
+								"{{rest_url}}"
+							],
+							"path": [
+								"users",
+								"enroll"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "f615d728-9280-45e6-bad8-3f034ceb5c1e",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "2785c367-92a3-44b1-8449-9b702818e553",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"id": "c959ef1a-96bd-4efb-81c0-b6b386b2b098",
+			"key": "graphql_url",
+			"value": "http://localhost:4000/graphql",
+			"type": "string"
+		},
+		{
+			"id": "30880c73-6ff8-4a71-a2c9-0fe94c7a2109",
+			"key": "rest_url",
+			"value": "http://localhost:4000",
+			"type": "string"
+		}
+	],
+	"protocolProfileBehavior": {}
+}

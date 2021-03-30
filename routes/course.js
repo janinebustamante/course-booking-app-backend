@@ -10,8 +10,9 @@ const CourseController = require('../controllers/course')
 // Update post - PUT /posts/:postId
 // Create post - POST /posts
 
-router.get('/', (req, res) => {
-    CourseController.getAll().then(courses => res.send(courses))
+router.get('/', (req, res) => { //auth.verify
+    // const isAdmin = true // some logic here to identify if request is coming from admin
+    CourseController.getAll().then(courses => res.send(courses)) //isAdmin
 })
 
 router.get('/:courseId', (req, res) => {
@@ -23,9 +24,9 @@ router.post('/', auth.verify, (req, res) => {
     CourseController.add(req.body).then(result => res.send(result))
 })
 
-router.put('/:courseId', auth.verify, (req, res) => {
-    const courseId = req.params.courseId
-    CourseController.update(courseId, req.body).then(result => res.send(result))
+router.put('/:courseId', auth.verify, (req, res) => { //no :courseId
+    const courseId = req.params.courseId //no courseId
+    CourseController.update(courseId, req.body).then(result => res.send(result)) //no courseId
 })
 
 router.delete('/:courseId', auth.verify, (req, res) => {

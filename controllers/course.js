@@ -1,6 +1,6 @@
 const Course = require('../models/course')
 
-module.exports.getAll = (isAdmin) => {
+module.exports.getAll = () => { //isAdmin
 	// if (isAdmin) {
 	// 	return Course.find({}).then(courses => courses)
 	// } else {

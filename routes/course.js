@@ -15,7 +15,11 @@ router.get('/', (req, res) => { //auth.verify
     CourseController.getAll().then(courses => res.send(courses)) //isAdmin
 })
 
-router.get('/:courseId', (req, res) => {
+router.get('/:courseId', auth.verify, (req, res) => { //gave authorization to access course details
+    let token = req.headers.authorization;
+    let payload = auth.decode(token)
+    console.log(payload);
+
 	const courseId = req.params.courseId
     CourseController.get({ courseId }).then(course => res.send(course)) 
 })

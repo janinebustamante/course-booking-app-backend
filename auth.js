@@ -2,7 +2,7 @@ const jwt = require('jsonwebtoken')
 const secret = 'CourseBookingAPI'
 
 module.exports.createAccessToken = (user) => {
-	const data = {
+	const data = { //payload
 		id: user._id,
 		email: user.email,
 		isAdmin: user.isAdmin
@@ -13,9 +13,11 @@ module.exports.createAccessToken = (user) => {
 
 module.exports.verify = (req, res, next) => {
 	let token = req.headers.authorization
+	// console.log(token)
 
 	if (typeof token !== 'undefined') {
-		token = token.slice(7, token.length)
+		token = token.slice(7, token.length) //removing Bearer(space)
+		// console.log(token)
 
 		return jwt.verify(token, secret, (err, data) => {
 			return (err) ? res.send({ auth: 'failed' }) : next()
@@ -34,5 +36,27 @@ module.exports.decode = (token) => {
 		})
 	} else {
 		return null
+	}
+}
+
+module.exports.verifyAdmin = (req, res, next) => {
+	let token = req.headers.authorization
+	// console.log(token)
+
+	if (typeof token !== 'undefined') {
+		let payload = module.exports.decode(token);
+		
+		if (payload.isAdmin == false) {
+			return res.send({ auth: 'failed' })
+		}
+		
+		token = token.slice(7, token.length) //removing Bearer(space)
+		// console.log(token)
+
+		return jwt.verify(token, secret, (err, data) => {
+			return (err) ? res.send({ auth: 'failed' }) : next()
+		})
+	} else {
+		return res.send({ auth: 'failed' })
 	}
 }

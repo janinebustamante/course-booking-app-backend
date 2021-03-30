@@ -22,6 +22,12 @@ router.get('/details', auth.verify, (req, res) => {
     UserController.get({ userId: user.id }).then(user => res.send(user))
 })
 
+//get other users' details (admin only)
+router.get('/:userId', auth.verifyAdmin, (req, res) => {
+    const userId = req.params.userId;
+    UserController.get({ userId }).then(user => res.send(user))
+})
+
 router.post('/enroll', auth.verify, (req, res) => {
 	const params = {
 		userId: auth.decode(req.headers.authorization).id,

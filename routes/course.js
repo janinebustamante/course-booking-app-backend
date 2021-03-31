@@ -10,15 +10,21 @@ const CourseController = require('../controllers/course')
 // Update post - PUT /posts/:postId
 // Create post - POST /posts
 
-router.get('/', (req, res) => { //auth.verify
-    // const isAdmin = true // some logic here to identify if request is coming from admin
-    CourseController.getAll().then(courses => res.send(courses)) //isAdmin
-})
 
-router.get('/:courseId', auth.verify, (req, res) => { //gave authorization to access course details
+router.get('/', auth.verify, (req, res) => { //auth.verify
+    // some logic here to identify if request is coming from admin
     let token = req.headers.authorization;
     let payload = auth.decode(token)
-    console.log(payload);
+    // console.log(payload.isAdmin)
+
+    CourseController.getAll(payload.isAdmin).then(courses => res.send(courses)) //isAdmin
+
+})
+
+router.get('/:courseId', (req, res) => { //gave authorization to access course details
+    let token = req.headers.authorization;
+    let payload = auth.decode(token)
+    // console.log(payload);
 
 	const courseId = req.params.courseId
     CourseController.get({ courseId }).then(course => res.send(course)) 

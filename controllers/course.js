@@ -1,11 +1,13 @@
 const Course = require('../models/course')
 
-module.exports.getAll = () => { //isAdmin
-	// if (isAdmin) {
-	// 	return Course.find({}).then(courses => courses)
-	// } else {
+
+
+module.exports.getAll = (isAdmin) => { 
+	if (isAdmin == true) {
+		return Course.find({}).then(courses => courses)
+	} else {
 		return Course.find({ isActive: true }).then(courses => courses)
-	// }
+	}
 }
 
 module.exports.add = (params) => {

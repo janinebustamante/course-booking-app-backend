@@ -41,7 +41,8 @@ router.put('/:courseId', auth.verify, (req, res) => { //no :courseId
 
 router.delete('/:courseId', auth.verify, (req, res) => {
 	const courseId = req.params.courseId
-    CourseController.archive({ courseId }).then(result => res.send(result))
+    // CourseController.archive({ courseId }).then(result => res.send(result))
+    CourseController.update(courseId, {isActive: false}).then(result => res.send(result)) //no courseId
 })
 
 

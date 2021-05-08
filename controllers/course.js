@@ -1,4 +1,5 @@
 const Course = require('../models/course')
+const { param } = require('../routes/course')
 
 
 
@@ -27,10 +28,19 @@ module.exports.get = (params) => {
 }
 
 module.exports.update = (courseId, params) => { //no courseId
-	const updates = {
-		name: params.name,
-		description: params.description,
-		price: params.price
+	const updates = {}
+	if (params.name){
+		updates.name = params.name
+	}
+	if (params.description) {
+		updates.description = params.description
+	}
+	if (params.price) {
+		updates.price = params.price
+	}
+	// console.log(params.isActive)
+	if (params.isActive !== undefined) {
+		updates.isActive = params.isActive
 	}
 
 	return Course.findByIdAndUpdate(courseId, updates).then((doc, err) => {

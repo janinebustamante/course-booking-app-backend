@@ -5,7 +5,7 @@ const cors = require("cors");
 
 require("dotenv").config();
 
-app.use(cors());
+app.use(cors({ credentials: true, origin: true }));
 
 const connectionString = process.env.MONGO_CONNECTION;
 mongoose.connection.once("open", () =>

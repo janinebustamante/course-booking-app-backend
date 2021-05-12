@@ -5,7 +5,7 @@ const cors = require("cors");
 
 require("dotenv").config();
 
-app.use(cors({ credentials: true, origin: true }));
+app.use(cors());
 app.options("*", cors());
 
 const connectionString = process.env.MONGO_CONNECTION;
